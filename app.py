@@ -88,7 +88,7 @@ st.write(f"**Corte que mais aparece:** {corte_mais_aparece}")
 
 # 2) Qual horário de preferência?
 horario_preferencia_max = filtered_data['Horário de preferência para cortar:'].value_counts().idxmax()
-st.write(f"**Horário de preferência:** {horario_preferencia_max}")
+st.write(f"**Horário de maior preferência dos clientes:** {horario_preferencia_max}")
 
 # 3) Qual dia que tem mais movimentação de clientes?
 dia_mais_movimentado = filtered_data['Dia de preferência:'].value_counts().idxmax()
