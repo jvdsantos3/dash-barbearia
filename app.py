@@ -82,23 +82,18 @@ horario_preferencia_chart = alt.Chart(horario_preferencia).mark_bar().encode(
 ).interactive()
 st.altair_chart(horario_preferencia_chart, use_container_width=True)
 
-# 1) Qual corte que mais aparece?
 corte_mais_aparece = filtered_data['Qual estilo de corte você usa?'].value_counts().idxmax()
 st.write(f"**Corte que mais aparece:** {corte_mais_aparece}")
 
-# 2) Qual horário de preferência?
 horario_preferencia_max = filtered_data['Horário de preferência para cortar:'].value_counts().idxmax()
 st.write(f"**Horário de maior preferência dos clientes:** {horario_preferencia_max}")
 
-# 3) Qual dia que tem mais movimentação de clientes?
 dia_mais_movimentado = filtered_data['Dia de preferência:'].value_counts().idxmax()
 st.write(f"**Dia com mais movimentação de clientes:** {dia_mais_movimentado}")
 
-# 4) Qual a média mensal de cortes dos clientes da barbearia?
 media_mensal_cortes = filtered_data['Média de cortes por mês:'].mean()
 st.write(f"**Média mensal de cortes dos clientes:** {media_mensal_cortes:.2f}")
 
-# 5) Qual a porcentagem de cada corte da barbearia?
 percentual_cortes = filtered_data['Qual estilo de corte você usa?'].value_counts(normalize=True).reset_index()
 percentual_cortes.columns = ['Corte', 'Porcentagem']
 percentual_cortes['Porcentagem'] *= 100
@@ -109,12 +104,10 @@ percentual_cortes_chart = alt.Chart(percentual_cortes).mark_bar().encode(
 ).interactive()
 st.altair_chart(percentual_cortes_chart, use_container_width=True)
 
-# 6) Qual o estilo de corte é mais popular dentre os jovens(14-29)?
 jovens = filtered_data[(filtered_data['Qual sua idade?'] >= 14) & (filtered_data['Qual sua idade?'] <= 29)]
 corte_mais_popular_jovens = jovens['Qual estilo de corte você usa?'].value_counts().idxmax()
 st.write(f"**Estilo de corte mais popular entre jovens (14-29):** {corte_mais_popular_jovens}")
 
-# 7) Qual o dia menos movimentado da barbearia?
 dia_menos_movimentado = filtered_data['Dia de preferência:'].value_counts().idxmin()
 st.write(f"**Dia menos movimentado da barbearia:** {dia_menos_movimentado}")
 
